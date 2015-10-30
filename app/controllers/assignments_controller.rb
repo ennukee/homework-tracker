@@ -2,15 +2,17 @@ class AssignmentsController < ApplicationController
 	def new
 	end
 
-	def edit
+	def show
+		@assignment = Assignment.find(params[:id])
 	end
 
-	def show
+	def index
 	end
 
 	def create
-	end
+		@assignment = Assignment.new(params.require(:assignment).permit(:name, :due_date, :assn_type, :percent_done))
 
-	def destroy
+		@assignment.save
+		redirect_to @assignment
 	end
 end

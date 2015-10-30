@@ -1,0 +1,19 @@
+= form_for :assignment, url: assignments_path do |f|
+	%p 
+		= f.label :name
+		%br/
+		= f.text_field :name
+	%p
+		= f.label :due_date
+		%br/
+		= f.date_select :due_date
+	%p
+		= f.label :assn_type
+		%br/
+		= f.select :assn_type, [["Extra Credit", 1],["Homework", 2],["Major Homework", 3],["Project", 4],["Exam", 5]]
+	%p
+		= f.label :percent_done
+		%br/
+		= f.text_field :percent_done
+	%p
+		= f.submit

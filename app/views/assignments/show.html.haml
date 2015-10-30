@@ -1,0 +1,16 @@
+%h3 Assignment
+%h1 
+	= @assignment.name
+%table
+	%tbody
+		%tr 
+			%th Due Date
+			%th Type
+			%th Percent Done
+		%tr
+			%td
+				=@assignment.due_date.strftime("%m/%d/%Y")
+			%td
+				=@assignment.assn_type
+			%td
+				=@assignment.percent_done
