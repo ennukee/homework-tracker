@@ -1,19 +1,37 @@
 = form_for :assignment do |f|
-	%table
+	#thecrasherbutton
+		=button_to '' #fuck this button
+	
+	%table#assignment_list_table
 		%tbody
 			%tr
-				%th Name
-				%th Due Date
-				%th Type
-				%th Percent Done
-			- Assignment.all.each do |a|
+				%th#index_name.assn_names
+					= link_to "Name", :sort => "name"
+				%th#index_due_date 
+					= link_to "Due Date", :sort => "due_date"
+				%th#index_assn_type 
+					= link_to "Type", :sort => "assn_type"
+				%th#index_percent_done 
+					= link_to "Percent Done", :sort => "percent_done"
+				%th#index_show Show
+				%th#index_edit Edit
+				%th#index_delete Delete
+			- @assignments.each do |a|
+
 				%tr
-					%td 
+					%td#index_name.assn_names
+						= #Math.sqrt(a.percent_done**2 + (10/7 * (Time.now.to_date-a.due_date).to_i)**2) * a.assn_type/5.0 + 141
 						=a.name
-					%td 
+					%td#index_due_date 
 						=a.due_date.strftime("%m/%d/%Y")
-					%td 
-						=a.assn_type
-					%td 
-						=a.percent_done
+					%td#index_assn_type
+						=assn_type_format(a.assn_type)
+					%td#index_percent_done 
+						=percent_format(a.percent_done)
+					%td
+						=button_to 'Show', assignment_path(a), method: :get, class: "buttonthing"
+					%td
+						=button_to 'Edit', edit_assignment_path(a), method: :get, class: "buttonthing"
+					%td
+						=button_to 'Delete', assignment_path(a), method: :delete, data: {confirm: "Are you sure?"},  class: "buttonthing"
 	= link_to 'New Assignment', new_assignment_path

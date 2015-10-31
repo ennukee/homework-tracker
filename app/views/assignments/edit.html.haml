@@ -1,4 +1,8 @@
-= form_for :assignment, url: assignments_path do |f|
+%h2 
+	Editting 
+	= @assignment.name
+
+= form_for @assignment, url: assignment_path(@assignment), method: :patch do |f|
 	- if @assignment.errors.any?
 		%div#error_explanation
 			%h2
@@ -26,3 +30,4 @@
 		= f.text_field :percent_done
 	%p
 		= f.submit
+	= link_to 'Back', assignments_path

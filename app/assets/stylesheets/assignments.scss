@@ -1,3 +1,48 @@
 // Place all the styles related to the Assignments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//body { background-color: #000000; }
+
+#thecrasherbutton {
+	display: none;
+}
+
+a {
+	color: #331133;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+th {
+	font-size: 24px;
+}
+
+.buttonthing {
+	width: 100%;
+	height: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+table#assignment_list_table {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-color: #FFFFFF;
+}
+
+table td { border-left: 1px solid #000; }
+table td:last-child { border-right: 1px solid #000; }
+
+th, td {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+th, td#index_name { width: 50%; }
+
+th, td#index_due_date { width:5px; }
+
+td#index_name { text-align: left; }

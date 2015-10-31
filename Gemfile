@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem "nokogiri", ">= 1.6.7.rc"
 gem "haml-rails", :group => :development
 gem "haml"
+gem "jquery-ui-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
