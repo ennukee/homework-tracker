@@ -2,36 +2,78 @@
 	#thecrasherbutton
 		=button_to '' #fuck this button
 	
-	%table#assignment_list_table
+	#myCarousel.carousel.slide{"data-ride" => "carousel"}
+		%ol.carousel-indicators
+			%li.active{"data-slide-to"=>"0", "data-target"=>"#myCarousel"}
+			%li{"data-slide-to"=>"1", "data-target"=>"#myCarousel"}
+			%li{"data-slide-to"=>"2", "data-target"=>"#myCarousel"}
+		.carousel-inner{"role"=>"listbox"} 
+			.item.active
+				= image_tag("cover4new.jpg")
+				.carousel-caption
+					#carousel-header Simplicity
+					%h5 Nobody likes a complicated interface.
+			.item
+				= image_tag("cover2new.jpg")
+				.carousel-caption
+					#carousel-header Efficiency
+					%p Let's you get know what to do, when.
+			.item
+				= image_tag("cover3new.jpg")
+				.carousel-caption
+					#carousel-header Optimization
+					%p So you can do what you want, more.
+		%a.left.carousel-control{"href"=>"#myCarousel", "role"=>"button", "data-slide"=>"prev"}
+			%span.glyphicon.glyphicon-chevron-left{"aria-hidden"=>"true"}
+			%span.sr-only Previous
+		%a.right.carousel-control{"href"=>"#myCarousel", "role"=>"button", "data-slide"=>"next"}
+			%span.glyphicon.glyphicon-chevron-right{"aria-hidden"=>"true"}
+			%span.sr-only Next
+	.navbar-wrapper
+		.container
+			.navbar.navbar-inverse
+				.navbar-collapse.collapse
+					%ul.nav.navbar-nav.navbar-left
+						%li{role: 'presentation'} 
+							.navbar-brand "What Should I Do?"
+						%li.active{"role"=>"presentation"}
+							= link_to "Home", assignments_path
+						%li
+							= link_to "New Assignment", new_assignment_path
+	%table#assignment_list_table.table-striped
 		%tbody
 			%tr
 				%th#index_name.assn_names
-					= link_to "Name", :sort => "name"
+					= sortable "name", "Name"
 				%th#index_due_date 
-					= link_to "Due Date", :sort => "due_date"
-				%th#index_assn_type 
-					= link_to "Type", :sort => "assn_type"
+					= sortable "due_date", "Due Date"
+				%th#index_assn_type
+					= sortable "assn_type", "Type"
 				%th#index_percent_done 
-					= link_to "Percent Done", :sort => "percent_done"
-				%th#index_show Show
-				%th#index_edit Edit
-				%th#index_delete Delete
+					= sortable "percent_done", "Percent Done"
+				%th#index_edit 
+				%th#index_delete 
 			- @assignments.each do |a|
-
 				%tr
 					%td#index_name.assn_names
 						= #Math.sqrt(a.percent_done**2 + (10/7 * (Time.now.to_date-a.due_date).to_i)**2) * a.assn_type/5.0 + 141
 						=a.name
 					%td#index_due_date 
-						=a.due_date.strftime("%m/%d/%Y")
+						=date_format(a.due_date)	
 					%td#index_assn_type
 						=assn_type_format(a.assn_type)
 					%td#index_percent_done 
-						=percent_format(a.percent_done)
-					%td
-						=button_to 'Show', assignment_path(a), method: :get, class: "buttonthing"
-					%td
-						=button_to 'Edit', edit_assignment_path(a), method: :get, class: "buttonthing"
-					%td
-						=button_to 'Delete', assignment_path(a), method: :delete, data: {confirm: "Are you sure?"},  class: "buttonthing"
-	= link_to 'New Assignment', new_assignment_path
+						.progress
+							- case(a.percent_done)
+							- when 0..40
+								.progress-bar.progress-bar-danger{style: 'height: 100px; width:'+percent_format(a.percent_done)}
+							- when 41..80
+								.progress-bar.progress-bar-warning{style: 'height: 100px; width:'+percent_format(a.percent_done)}
+							- when 81..99
+								.progress-bar.progress-bar-success{style: 'height: 100px; width:'+percent_format(a.percent_done)}
+							- else
+								.progress-bar.progress-bar-info{style: 'height: 100px; width:'+percent_format(a.percent_done)}
+					%td#index_edit
+						=button_to 'Edit', edit_assignment_path(a), method: :get, class: "btn btn-warning"
+					%td#index_delete
+						=button_to 'Delete', assignment_path(a), method: :delete, data: {confirm: "Are you sure?"},  class: "btn btn-danger"

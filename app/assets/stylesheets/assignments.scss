@@ -8,14 +8,39 @@
 	display: none;
 }
 
-a {
-	color: #331133;
-	text-decoration: none;
-	font-weight: bold;
+.btn { width: 95%; }
+
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.navbar {
+	margin: 0 auto;
+	width:85%;
+	top:10px;
+}
+
+.navbar-wrapper .container {
+   padding-left: 0;
+   padding-right: 0;
+}
+
+.navbar-wrapper .navbar {
+   padding-left: 5px;
+   padding-right: 5px;
 }
 
 th {
+	text-align: center;
 	font-size: 24px;
+}
+
+#carousel-header {
+	font-size: 80px;
 }
 
 .buttonthing {
@@ -31,10 +56,8 @@ table#assignment_list_table {
 	margin-right: auto;
 	text-align: center;
 	background-color: #FFFFFF;
+	margin-top: 10px;
 }
-
-table td { border-left: 1px solid #000; }
-table td:last-child { border-right: 1px solid #000; }
 
 th, td {
 	padding-left: 5px;
@@ -42,7 +65,9 @@ th, td {
 }
 
 th, td#index_name { width: 50%; }
-
-th, td#index_due_date { width:5px; }
+th, td#index_due_date { width:13%; }
+th, td#index_show { width: 30px;}
+th, td#index_edit { width: 30px;}
+th, td#index_delete { width: 30px; }
 
 td#index_name { text-align: left; }

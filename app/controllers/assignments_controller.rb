@@ -8,7 +8,7 @@ class AssignmentsController < ApplicationController
 	end
 
 	def index
-		@assignments = Assignment.order(params[:sort] || :name)
+		@assignments = Assignment.order(sort_column + " " + sort_direction)
 	end
 
 	def edit
@@ -43,7 +43,16 @@ class AssignmentsController < ApplicationController
 	end
 
 	private
+		helper_method :sort_column, :sort_direction
 		def assn_params
 			params.require(:assignment).permit(:name, :due_date, :assn_type, :percent_done)
 		end
+
+		def sort_column
+   			Assignment.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  		end
+  
+  		def sort_direction
+    		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  		end
 end

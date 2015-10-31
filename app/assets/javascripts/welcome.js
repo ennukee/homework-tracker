@@ -4,12 +4,10 @@ $(document).ready(function() {
 	});
 
 	$('.assn_names').on("mouseover", function () {
-		//$(this).animate({backgroundColor: "#FF0000"}, 1000);
-		$(this).css('backgroundColor','#DDCCBB');
-	});
-	$('.assn_names').on("mouseout", function () {
-		//$(this).animate({backgroundColor: "#FF0000"}, 1000);
-		$(this).css('backgroundColor','white');
 	});
 });
+
+function registerFT (handler, ev, func) {
+  $('.bootstrap-environment').on(ev, handler, func);
+}
 

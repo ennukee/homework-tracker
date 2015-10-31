@@ -8,21 +8,33 @@
 				- @assignment.errors.full_messages.each do |msg|
 					%li
 						= msg
-	%p 
-		= f.label :name
-		%br/
-		= f.text_field :name
-	%p
-		= f.label :due_date
-		%br/
-		= f.date_select :due_date
-	%p
-		= f.label :assn_type
-		%br/
-		= f.select :assn_type, [["Extra Credit", 1],["Homework", 2],["Major Homework", 3],["Project", 4],["Exam", 5]]
-	%p
-		= f.label :percent_done
-		%br/
-		= f.text_field :percent_done
-	%p
-		= f.submit
+	.panel.panel-primary
+		.panel-heading
+			%h3 Create a new assignment
+		.panel-body
+			.form-group
+				.col-md-2.col-md-offset-5
+					= f.label :name, class: "col-md-4.control-label"
+					%br/
+					= f.text_field :name, class: "form-control input-md"
+			.form-group
+				.col-md-2.col-md-offset-5
+					= f.label :due_date, class: "col-md-4.control-label"
+					%br/
+					= f.date_select :due_date, class: "form-control"
+			.form-group
+				.col-md-2.col-md-offset-5
+					= f.label :assn_type, "Assignment type", class: "col-md-4.control-label"
+					%br/
+					= f.select :assn_type, options_for_select([["Extra Credit", 1],["Homework", 2],["Major Homework", 3],["Project", 4],["Exam", 5]]), {}, class: "form-control"
+					.help-block Or whatever difficulty it's closest to
+			.form-group
+				.col-md-2.col-md-offset-5
+					= f.label :percent_done, class: "col-md-4.control-label"
+					%br/
+					= f.text_field :percent_done, class: "form-control"
+					.help-block From 0 to 100. No decimals.
+			.form-group
+				.col-md-2.col-md-offset-5.btn.btn-primary
+					%button.btn.btn-default{type: 'submit'}
+						Submit
