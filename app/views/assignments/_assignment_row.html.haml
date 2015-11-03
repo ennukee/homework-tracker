@@ -1,0 +1,27 @@
+%tr{style: 'vertical-align: middle;'}
+  %td#index_name.assn_names
+    = #Math.sqrt(a.percent_done**2 + (10/7 * (Time.now.to_date-a.due_date).to_i)**2) * a.assn_type/5.0 + 141
+    =asn.name
+  %td#index_due_date 
+    =date_format(asn.due_date)  
+  %td#index_assn_type
+    =assn_type_format(asn.assn_type)
+  %td#index_percent_done 
+    .progress#annoying_bar_that_wont_align_right
+      - case(asn.percent_done)
+      - when 0..40
+        .progress-bar.progress-bar-danger{style: 'min-width: 2em; vertical-align: middle; width:'+percent_format(asn.percent_done)}
+          =percent_format(asn.percent_done)
+      - when 41..80
+        .progress-bar.progress-bar-warning{style: 'width:'+percent_format(asn.percent_done)}
+          =percent_format(asn.percent_done)
+      - when 81..99
+        .progress-bar.progress-bar-success{style: 'width:'+percent_format(asn.percent_done)}
+          =percent_format(asn.percent_done)
+      - else
+        .progress-bar.progress-bar-info{style: 'height: 100px; width:'+percent_format(asn.percent_done)}
+          =percent_format(asn.percent_done)
+  %td#index_edit
+    =button_to 'Edit', edit_assignment_path(asn), method: :get, class: "btn btn-warning"
+  %td#index_delete
+    =button_to 'Delete', assignment_path(asn), method: :delete, data: {confirm: "are you sure?"},  class: "btn btn-danger"

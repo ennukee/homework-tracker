@@ -2,7 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//body { background-color: #000000; }
+body { padding-top: 50px; }
+
+/* --- Variables --- */
+
+$gray: #333;
+$gray-medium-light: #3b3b3b;
+$gray-darker: #2d2d2d;
+$gray-light: #3e3e3e;
+
+/* --- Unrelated Stuff --- */
 
 #thecrasherbutton {
 	display: none;
@@ -10,64 +19,99 @@
 
 .btn { width: 95%; }
 
+/* --- Carousel Related --- */
+
+#carousel-header {
+  font-size: 80px;
+}
+
+/* --- Navbar Related --- */
+
 .navbar-wrapper {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 20;
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 .navbar {
-	margin: 0 auto;
-	width:85%;
-	top:10px;
+  margin: 0 auto;
+  width:85%;
+  top:10px;
 }
 
-.navbar-wrapper .container {
-   padding-left: 0;
-   padding-right: 0;
-}
+/* --- Assignment List Related --- */
 
-.navbar-wrapper .navbar {
-   padding-left: 5px;
-   padding-right: 5px;
+.assn_list_header a {
+  color: #333 !important;
 }
 
 th {
-	text-align: center;
-	font-size: 24px;
-}
-
-#carousel-header {
-	font-size: 80px;
-}
-
-.buttonthing {
-	width: 100%;
-	height: 100%;
-	padding-left: 0px;
-	padding-right: 0px;
+  text-align: center;
+  font-size: 24px;
 }
 
 table#assignment_list_table {
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	background-color: #FFFFFF;
-	margin-top: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #FFFFFF;
+  margin-top: 10px;
 }
 
 th, td {
-	padding-left: 5px;
-	padding-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 th, td#index_name { width: 50%; }
 th, td#index_due_date { width:13%; }
+th, td#index_percent_done { padding-left: 5px; padding-right: 5px; padding-top: 5px;}
 th, td#index_show { width: 30px;}
 th, td#index_edit { width: 30px;}
 th, td#index_delete { width: 30px; }
 
 td#index_name { text-align: left; }
+
+.buttonthing {
+  width: 100%;
+  height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* --- Footer Related --- */
+
+footer {
+  padding: 10px;
+  margin-top: 45px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
