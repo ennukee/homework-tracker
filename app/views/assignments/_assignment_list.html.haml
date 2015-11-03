@@ -1,0 +1,15 @@
+%table#assignment_list_table.table-striped
+  %tbody
+    %tr
+      %th#index_name.assn_list_header
+        = sortable "name", "Name"
+      %th#index_due_date.assn_list_header
+        = sortable "due_date", "Due Date"
+      %th#index_assn_type.assn_list_header
+        = sortable "assn_type", "Type"
+      %th#index_percent_done.assn_list_header
+        = sortable "percent_done", "Percent Done"
+      %th#index_edit 
+      %th#index_delete 
+    - @assignments.each do |a|
+      = render 'assignment_row', asn: a

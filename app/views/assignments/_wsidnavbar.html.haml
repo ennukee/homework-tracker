@@ -1,0 +1,10 @@
+.navbar-wrapper.navbar-fixed-top.navbar-inverse
+  .container
+    .navbar-brand "What Should I Do?"
+    .nav
+      .navbar-collapse.collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li.active{"role"=>"presentation"}
+            = link_to "Home", assignments_path
+          %li
+            = link_to "New Assignment", new_assignment_path

@@ -1,0 +1,25 @@
+#myCarousel.carousel.slide{"data-ride" => "carousel"}
+  %ol.carousel-indicators
+    %li.active{"data-slide-to"=>"0", "data-target"=>"#myCarousel"}
+    %li{"data-slide-to"=>"1", "data-target"=>"#myCarousel"}
+    %li{"data-slide-to"=>"2", "data-target"=>"#myCarousel"}
+  .carousel-inner{"role"=>"listbox"} 
+    .item.active
+      = image_tag("cover4new.jpg")
+      .carousel-caption
+        #carousel-header Simplicity
+        %h5 Nobody likes a complicated interface.
+    .item
+      = image_tag("cover2new.jpg")
+      .carousel-caption
+        #carousel-header Efficiency
+        %p Let's you get know what to do, when.
+    .item
+      = image_tag("cover3new.jpg")
+      .carousel-caption
+        #carousel-header Optimization
+        %p So you can do what you want, more.
+  %a.left.carousel-control{"href"=>"#myCarousel", "role"=>"button", "data-slide"=>"prev"}
+    %span.sr-only Previous
+  %a.right.carousel-control{"href"=>"#myCarousel", "role"=>"button", "data-slide"=>"next"}
+    %span.sr-only Next
