@@ -1,17 +1,9 @@
 = form_for :assignment do |f|
 	#thecrasherbutton
 		=button_to '' #fuck this button
-	
-	-#	TO-DO LIST
-	-#  1. Rails Modals for New and Edit assignments
-	-#  2. User integration
-	-#  3. Complete 'About Us' and 'Contact' pages
-	-#  4. Create a home page with information about 'What to do today' and such (i.e. don't auto-load list of assignments)
-	-#  5. Redesign the 'Show' page (or circumvent it entirely?)
-	-#  6. Create a logo for the navbar
-	-#  7. Add the ability to 'Bulk Add' (every week on Wednesday, three times, something like that)
 
-	= render 'carousel'
+	- if show_carousel?
+		= render 'carousel'
 	= render 'wsidnavbar'
 	-if params[:about_us].present?
 		= render 'about_us'

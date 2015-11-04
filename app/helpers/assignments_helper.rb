@@ -36,4 +36,16 @@ module AssignmentsHelper
 		end
 		i.strftime("%m/%d/%Y") + "\n(" + to_add + ")"
 	end
+
+	def carousel_disabler_link
+		if session[:carousel]
+			link_to "Disable Carousel", controller: 'assignments', action: 'carousel_toggle'
+		else
+			link_to "Enable Carousel", controller: 'assignments', action: 'carousel_toggle'
+		end
+	end
+
+	def show_carousel?
+    session[:carousel]
+  end
 end

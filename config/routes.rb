@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   get 'assignments/new'
+  get 'assignments/carousel_toggle'
   resources :assignments
 
   # The priority is based upon order of creation: first created -> highest priority.

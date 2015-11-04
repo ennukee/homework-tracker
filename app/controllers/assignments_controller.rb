@@ -42,6 +42,14 @@ class AssignmentsController < ApplicationController
 		redirect_to assignments_path
 	end
 
+  def carousel_toggle
+    if session[:carousel]
+    	session[:carousel] = false
+    else session[:carousel] = true
+    end
+    redirect_to assignments_path
+  end
+
 	private
 		helper_method :sort_column, :sort_direction
 		def assn_params
