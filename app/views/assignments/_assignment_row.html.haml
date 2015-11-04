@@ -16,10 +16,10 @@
         .progress-bar.progress-bar-warning{style: 'width:'+percent_format(asn.percent_done)}
           =percent_format(asn.percent_done)
       - when 81..99
-        .progress-bar.progress-bar-success{style: 'width:'+percent_format(asn.percent_done)}
+        .progress-bar.progress-bar-success.progress-bar-striped.active{style: 'width:'+percent_format(asn.percent_done)}
           =percent_format(asn.percent_done)
       - else
-        .progress-bar.progress-bar-info{style: 'height: 100px; width:'+percent_format(asn.percent_done)}
+        .progress-bar.progress-bar-info.progress-bar-striped.active{style: 'height: 100px; width:'+percent_format(asn.percent_done)}
           =percent_format(asn.percent_done)
   %td#index_edit
     =button_to 'Edit', edit_assignment_path(asn), method: :get, class: "btn btn-warning"
