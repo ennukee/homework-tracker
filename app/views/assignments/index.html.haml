@@ -4,11 +4,11 @@
 
 	- if show_carousel?
 		= render 'carousel'
-	= render 'wsidnavbar'
+	= #render 'wsidnavbar'
 	-if params[:about_us].present?
 		= render 'about_us'
 	-elsif params[:contact].present?
 		= render 'contact'
 	-else
 		= render 'assignment_list'
-	= render 'footer'
+	= #render 'footer'

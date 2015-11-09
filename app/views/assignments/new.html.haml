@@ -9,8 +9,8 @@
 					%li
 						= msg
 	.panel.panel-primary
-		.panel-heading
-			%h3 Create a new assignment
+		.title{style: 'text-align: center;'}
+			%h3{style: 'font-size: 64px'} Create Assignment
 		.panel-body
 			.form-group
 				.col-md-2.col-md-offset-5
@@ -35,6 +35,6 @@
 					= f.text_field :percent_done, class: "form-control"
 					.help-block From 0 to 100. No decimals.
 			.form-group
-				.col-md-2.col-md-offset-5.btn.btn-primary
+				.col-md-2.col-md-offset-5.btn{style: "background-color: #666"}
 					%button.btn.btn-default{type: 'submit'}
 						Submit
