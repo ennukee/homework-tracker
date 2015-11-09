@@ -11,6 +11,13 @@ $gray-medium-light: #3b3b3b;
 $gray-darker: #2d2d2d;
 $gray-light: #3e3e3e;
 
+@font-face {
+  font-family: 'logoFont';
+  src: font-url('MANIFESTO.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* --- Unrelated Stuff --- */
 
 #thecrasherbutton {
@@ -47,6 +54,15 @@ $gray-light: #3e3e3e;
   margin: 0 auto;
   width:85%;
   top:10px;
+}
+
+.logo-portion {
+  font-family: 'logoFont' !important;
+  font-size: 32px !important;
+}
+
+.logo-font {
+  font-family: 'logoFont' !important;
 }
 
 /* --- Assignment List Related --- */

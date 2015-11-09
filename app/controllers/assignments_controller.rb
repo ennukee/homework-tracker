@@ -47,7 +47,7 @@ class AssignmentsController < ApplicationController
     	session[:carousel] = false
     else session[:carousel] = true
     end
-    redirect_to assignments_path
+    redirect_to(:back)
   end
 
 	private
