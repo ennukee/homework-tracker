@@ -8,7 +8,19 @@
 </head>
 <body>
 
+<%= render 'layouts/wsidnavbar' %>
+<% flash.each do |type, content| %>
+  <% if content.respond_to?('each') 
+    content.each do |item| %>
+      <%= render 'layouts/alert', type: type, content: item %>
+    <% end %>
+  <% else %>
+    <%= render 'layouts/alert', type: type, content: content %>
+  <% end %>
+<% end %>
 <%= yield %>
+<%= render 'layouts/footer' %>
+<%= debug(params) if Rails.env.development? %>
 
 </body>
 </html>
