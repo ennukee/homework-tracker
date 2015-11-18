@@ -1,34 +1,33 @@
-= form_for :user, url: users_path do |f|
-  - if @user.errors.any?
-    %div#error_explanation{style: "text-align: center;"}
-      %h2
-        = pluralize(@user.errors.count, "error")
-        prohibited this user from being created:
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li
-            = msg
-  .panel.panel-primary
-    .title{style: 'text-align: center;'}
-      %h3{style: 'font-size: 64px'} Sign up
-    .panel-body
-      .form-group
-        .col-md-2.col-md-offset-5
-          = f.label :username, class: "col-md-4.control-label"
-          %br/
-          = f.text_field :username, class: "form-control input-md"
-      .form-group
-        .col-md-2.col-md-offset-5
-          = f.label :password, class: "col-md-4.control-label"
-          %br/
-          = f.text_field :password, class: "form-control"
-      .form-group
-        .col-md-2.col-md-offset-5
-          = f.label :password_confirmation, "Assignment type", class: "col-md-4.control-label"
-          %br/
-          = f.text_field :password_confirmation, class: "form-control"
-          .help-block Make sure to type your password twice!
-      .form-group
-        .col-md-2.col-md-offset-5.btn{style: 'background-color: #666;'}
-          %button.btn.btn-default{type: 'submit'}
-            Submit
+.row
+  .col-md-4.col-md-offset-4
+    = form_for :user, url: users_path do |f|
+      - if @user.errors.any?
+        %div#error_explanation
+          %h2
+            .alert.alert-danger{style: "text-align: center"}
+              = pluralize(@user.errors.count, "error")
+              prohibited this user from being created:
+          .alert.alert-danger
+            %ul
+              - @user.errors.full_messages.uniq.each do |msg|
+                %li
+                  = msg
+      .panel.panel-primary
+        .title{style: 'text-align: center;'}
+          %h3{style: 'font-size: 64px'} Sign up
+        .panel-body
+          .form-group
+            = f.label :username, class: "col-md-4.control-label"
+            = f.text_field :username, class: "form-control input-md"
+            .help-block Between 6 and 20 characters
+          .form-group
+            = f.label :password, class: "col-md-4.control-label"
+            = f.password_field :password, class: "form-control"
+            .help-block More than 6 characters
+          .form-group
+            = f.label :password_confirmation, "Confirm password", class: "col-md-4.control-label"
+            = f.password_field :password_confirmation, class: "form-control"
+          .form-group
+            .btn{style: 'background-color: #666;'}
+              %button.btn.btn-default{type: 'submit'}
+                Submit

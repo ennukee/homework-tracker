@@ -4,10 +4,14 @@ class User < ActiveRecord::Base
 
   has_many :assignments
   validates :username, presence: true, 
-                       length: { maximum: 20 },
+                       length: { maximum: 20, minimum: 6 },
                        uniqueness: {case_sensitive: false}
   validates :password, presence: true,
                        length: { minimum: 6 }
 
   has_secure_password
+
+  def assignments
+    Assignments.where(user_id: id)
+  end
 end

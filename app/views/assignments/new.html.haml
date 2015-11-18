@@ -1,40 +1,33 @@
-= form_for :assignment, url: assignments_path do |f|
-	- if @assignment.errors.any?
-		%div#error_explanation
-			%h2
-				= pluralize(@assignment.errors.count, "error")
-				prohibited this assignment from being saved:
-			%ul
-				- @assignment.errors.full_messages.each do |msg|
-					%li
-						= msg
-	.panel.panel-primary
-		.title{style: 'text-align: center;'}
-			%h3{style: 'font-size: 64px'} Create Assignment
-		.panel-body
-			.form-group
-				.col-md-2.col-md-offset-5
-					= f.label :name, class: "col-md-4.control-label"
-					%br/
-					= f.text_field :name, class: "form-control input-md"
-			.form-group
-				.col-md-2.col-md-offset-5
-					= f.label :due_date, class: "col-md-4.control-label"
-					%br/
-					= f.date_select :due_date, class: "form-control"
-			.form-group
-				.col-md-2.col-md-offset-5
-					= f.label :assn_type, "Assignment type", class: "col-md-4.control-label"
-					%br/
-					= f.select :assn_type, options_for_select([["Extra Credit", 1],["Homework", 2],["Major Homework", 3],["Project", 4],["Exam", 5]]), {}, class: "form-control"
-					.help-block Or whatever difficulty it's closest to
-			.form-group
-				.col-md-2.col-md-offset-5
-					= f.label :percent_done, class: "col-md-4.control-label"
-					%br/
-					= f.text_field :percent_done, class: "form-control"
-					.help-block From 0 to 100. No decimals.
-			.form-group
-				.col-md-2.col-md-offset-5.btn{style: "background-color: #666"}
-					%button.btn.btn-default{type: 'submit'}
-						Submit
+.row
+	.col-md-4.col-md-offset-4
+		= form_for :assignment, url: assignments_path do |f|
+			- if @assignment.errors.any?
+				%div#error_explanation{style: 'text-align: center;'}
+					%h2
+						= pluralize(@assignment.errors.count, "error")
+						prohibited this assignment from being saved:
+					- @assignment.errors.full_messages.each do |msg|
+						%p
+							= msg
+			.panel.panel-primary
+				.title{style: 'text-align: center;'}
+					%h3{style: 'font-size: 64px'} Create Assignment
+				.panel-body
+					.form-group
+						= f.label :name, class: "col-md-4 control-label"
+						= f.text_field :name, class: "form-control input-md"
+					.form-group
+						= f.label :due_date, class: "col-md-4 control-label"
+						= f.date_select :due_date, class: "form-control"
+					.form-group
+						= f.label :assn_type, "Assignment type", class: "col-md-4.control-label"
+						= f.select :assn_type, options_for_select([["Extra Credit", 1],["Homework", 2],["Major Homework", 3],["Project", 4],["Exam", 5]]), {}, class: "form-control"
+						.help-block Or whatever difficulty it's closest to
+					.form-group
+						= f.label :percent_done, class: "col-md-4.control-label"
+						= f.text_field :percent_done, class: "form-control"
+						.help-block From 0 to 100. No decimals.
+					.form-group
+						.btn{style: "background-color: #666"}
+							%button.btn.btn-default{type: 'submit'}
+								Submit
