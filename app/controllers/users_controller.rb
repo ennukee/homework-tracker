@@ -16,7 +16,6 @@ class UsersController < ApplicationController
       flash_add(:success, "User " + @user.username + " was successfully created!")
       redirect_to root_path
     else
-      flash_add(:danger, "User did not save correctly, see errors")
       render 'new'
     end
   end
