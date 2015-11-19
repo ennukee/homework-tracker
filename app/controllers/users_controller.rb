@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(assn_params)
     if @user.save
+      log_in @user
       flash_add(:success, "User " + @user.username + " was successfully created!")
       redirect_to root_path
     else
@@ -26,6 +27,6 @@ class UsersController < ApplicationController
 
   private
     def assn_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end

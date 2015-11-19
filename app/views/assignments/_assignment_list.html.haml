@@ -11,5 +11,9 @@
         = sortable "percent_done", "Percent Done"
       %th#index_edit 
       %th#index_delete 
-    - @assignments.each do |a|
-      = render 'assignment_row', asn: a
+    - if logged_in?
+      - user.assignments.each do |a|
+        = render 'assignment_row', asn: a
+    - else
+      - #don't forget to implement this!
+      = render 'default_assignments_display'

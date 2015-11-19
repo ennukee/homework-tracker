@@ -1,0 +1,23 @@
+.row
+  .col-md-4.col-md-offset-4
+    = form_for :session, url: make_user_path do |f|
+      .panel.panel-primary
+        .title{style: 'text-align: center;'}
+          %h3{style: 'font-size: 64px'} Log-in
+        .panel-body
+          .form-group
+            = f.label :username, class: "col-md-4.control-label"
+            = f.text_field :username, class: "form-control input-md"
+          .form-group
+            = f.label :password, class: "col-md-4.control-label"
+            = f.password_field :password, class: "form-control"
+            .help-block (Psst! It's 6 or more characters!)
+          .form-group
+            %label.checkbox
+              = f.check_box :remember_me
+              %p{style: 'padding-left: 15px;'} Remember me
+          .form-group
+            .btn{style: "background-color: #666"}
+              %button.btn.btn-default{type: 'submit'}
+                Log in
+          = link_to "New user? Click here!", new_user_path

@@ -21,6 +21,10 @@
             = f.text_field :username, class: "form-control input-md"
             .help-block Between 6 and 20 characters
           .form-group
+            = f.label :email, class: "col-md-4.control-label"
+            = f.text_field :email, class: "form-control input-md"
+            .help-block Valid email formats only, please
+          .form-group
             = f.label :password, class: "col-md-4.control-label"
             = f.password_field :password, class: "form-control"
             .help-block More than 6 characters

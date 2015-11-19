@@ -1,6 +1,7 @@
 .row
 	.col-md-4.col-md-offset-4
 		= form_for :assignment, url: assignments_path do |f|
+			= f.hidden_field :user_id, value: current_user.id
 			- if @assignment.errors.any?
 				%div#error_explanation{style: 'text-align: center;'}
 					%h2
@@ -14,10 +15,10 @@
 					%h3{style: 'font-size: 64px'} Create Assignment
 				.panel-body
 					.form-group
-						= f.label :name, class: "col-md-4 control-label"
+						= f.label :name, class: "col-md-4.control-label"
 						= f.text_field :name, class: "form-control input-md"
 					.form-group
-						= f.label :due_date, class: "col-md-4 control-label"
+						= f.label :due_date, class: "col-md-4.control-label"
 						= f.date_select :due_date, class: "form-control"
 					.form-group
 						= f.label :assn_type, "Assignment type", class: "col-md-4.control-label"

@@ -4,7 +4,18 @@
     .nav
       .navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
-          %li.active{"role"=>"presentation"}
-            = link_to "Home", assignments_path
-          %li
-            = link_to "New Assignment", new_assignment_path
+          %li.active{"role"=>"presentation"}= link_to "Home", root_path
+          - if logged_in?
+            %li= link_to "Assignments", '#'
+            %li.dropdown
+              %a.dropdown-toggle#acctdropdown{:href => "#", "data-toggle" => "dropdown"} 
+                Account
+                %b.caret
+              %ul.dropdown-menu{"aria-labelledby" => "acctdropdown"}
+                %li= link_to "New Assignment", new_assignment_path
+                %li= link_to "Settings", '#'
+                %li.divider
+                %li= link_to "Log out", logout_path, method: :delete
+          - else
+            %li
+              = link_to "Log in", login_path
