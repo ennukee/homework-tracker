@@ -10,5 +10,5 @@
 	-elsif params[:contact].present?
 		= render 'contact'
 	-else
-		= render 'assignment_list'
+		= render 'assignment_list', user: current_user
 	= #render 'footer'

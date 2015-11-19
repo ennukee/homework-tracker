@@ -1,4 +1,6 @@
 class AssignmentsController < ApplicationController
+  include ApplicationHelper
+
 	def new
 		@assignment = Assignment.new
 	end
@@ -29,7 +31,9 @@ class AssignmentsController < ApplicationController
 		@assignment = Assignment.new(assn_params)
 
 		if @assignment.save
-			redirect_to @assignment
+      flash_add(:success, "Assignment " + @assignment.name + " created!")
+      flash_add(:warning, "user ID: " + current_user.id.to_s)
+			redirect_to root_path
 		else
 			render 'new'
 		end
@@ -53,7 +57,7 @@ class AssignmentsController < ApplicationController
 	private
 		helper_method :sort_column, :sort_direction
 		def assn_params
-			params.require(:assignment).permit(:name, :due_date, :assn_type, :percent_done)
+			params.require(:assignment).permit(:name, :due_date, :assn_type, :percent_done, :user_id)
 		end
 
 		def sort_column
