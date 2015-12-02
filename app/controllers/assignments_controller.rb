@@ -32,7 +32,6 @@ class AssignmentsController < ApplicationController
 
 		if @assignment.save
       flash_add(:success, "Assignment " + @assignment.name + " created!")
-      flash_add(:warning, "user ID: " + current_user.id.to_s)
 			redirect_to root_path
 		else
 			render 'new'
