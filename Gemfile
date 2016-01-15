@@ -5,7 +5,7 @@ gem "haml-rails", :group => :development
 gem "haml"
 gem "jquery-ui-rails"
 gem "jquery-turbolinks"
-gem 'bcrypt', '3.1.7'
+gem 'bcrypt'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
