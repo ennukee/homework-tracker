@@ -1,0 +1,23 @@
+#default_assignments_display.alert.alert-info
+  #title
+    This is an example of what you could be utilizing
+  #subtitle
+    A simplistic interface designed to help you get tasks done
+%table#assignment_list_table.table-striped
+  %tbody
+    %tr
+      %th#index_name.assn_list_header
+        = sortable "name", "Name"
+      %th#index_due_date.assn_list_header
+        = sortable "due_date", "Due Date"
+      %th#index_assn_type.assn_list_header
+        = sortable "assn_type", "Type"
+      %th#index_percent_done.assn_list_header
+        = sortable "percent_done", "Percent Done"
+      %th#index_edit 
+      %th#index_delete 
+    = render 'default_assignment_row', asn_name: 'This could be your assignment!', asn_due_date: Time.now.to_date + 7.days, asn_assn_type: 'Major Deadline', asn_percent_done: 90
+    = render 'default_assignment_row', asn_name: 'A BIG Project!', asn_due_date: Time.now.to_date + 19.days, asn_assn_type: 'Project', asn_percent_done: 30
+    = render 'default_assignment_row', asn_name: 'Date with Susie Dornin', asn_due_date: Time.now.to_date + 7.days, asn_assn_type: 'Big Event', asn_percent_done: 20
+    = render 'default_assignment_row', asn_name: 'Cleaning the house', asn_due_date: Time.now.to_date + 7.days, asn_assn_type: 'Chore', asn_percent_done: 75
+    = render 'default_assignment_row', asn_name: 'Finishing my website', asn_due_date: Time.now.to_date + 7.days, asn_assn_type: 'Personal Project', asn_percent_done: 55

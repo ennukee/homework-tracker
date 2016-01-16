@@ -1,17 +1,16 @@
 = form_for :assignment do |f|
-	#thecrasherbutton
-		=button_to '' #fuck this button
-
 	- if show_carousel?
 		= render 'carousel'
-	= #render 'wsidnavbar'
-	-if params[:about_us].present?
+	- if params[:about_us].present?
 		= render 'about_us'
-	-elsif params[:contact].present?
+	- elsif params[:contact].present?
 		= render 'contact'
-	-else
-		- unless current_user.assignments.empty?
-			= render 'assignment_list', user: current_user
+	- else
+		- if logged_in?
+			- unless current_user.assignments.empty?
+				= render 'assignment_list', user: current_user
+			- else
+				= render 'no_assignments_notify', user: current_user
 		- else
-			= render 'no_assignments_notify', user: current_user
+			= render 'default_assignments_display'
 	= #render 'footer'

@@ -113,7 +113,20 @@ td#index_name { text-align: left; }
       margin-top: 10px;
     }
   }
-  
+}
+
+#default_assignments_display {
+  margin: 10px 15% 0 15%;
+  width: 70%;
+  text-align: center;
+  #title {
+    padding: 0 0 0 0;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  #subtitle {
+    font-size: 16px;
+  }
 }
 
 .buttonthing {
