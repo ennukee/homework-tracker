@@ -5,7 +5,7 @@
   %td#index_due_date 
     =date_format(asn.due_date)  
   %td#index_assn_type
-    =assn_type_format(asn.assn_type)
+    = asn.assn_type
   %td#index_percent_done 
     .progress#annoying_bar_that_wont_align_right
       - case(asn.percent_done)
