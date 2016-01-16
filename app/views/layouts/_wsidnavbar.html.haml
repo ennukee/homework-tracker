@@ -9,7 +9,7 @@
             %li= link_to "Assignments", assignments_path
             %li.dropdown
               %a.dropdown-toggle#acctdropdown{:href => "#", "data-toggle" => "dropdown"} 
-                Account
+                = current_user.username.capitalize
                 %b.caret
               %ul.dropdown-menu{"aria-labelledby" => "acctdropdown"}
                 %li= link_to "New Assignment", new_assignment_path
