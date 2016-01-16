@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119182711) do
+ActiveRecord::Schema.define(version: 20160116070654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151119182711) do
     t.string   "name"
     t.date     "due_date"
     t.integer  "percent_done"
-    t.integer  "assn_type"
+    t.string   "assn_type"
     t.integer  "priority"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20151119182711) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                                                                                   null: false
+    t.datetime "updated_at",                                                                                   null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "email"
+    t.string   "assignment_types", default: ["Extra Credit", "Homework", "Major Homework", "Project", "Exam"],              array: true
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree

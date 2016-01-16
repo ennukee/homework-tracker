@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
 
+  def index_of_assn_type(assn)
+    assignment_types.index(assn)
+  end
+
   def assignments
     Assignment.where(user_id: id)
   end

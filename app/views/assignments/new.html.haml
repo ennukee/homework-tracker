@@ -22,8 +22,8 @@
 						= f.date_select :due_date, class: "form-control"
 					.form-group
 						= f.label :assn_type, "Assignment type", class: "col-md-4.control-label"
-						= f.select :assn_type, options_for_select([["Extra Credit", 1],["Homework", 2],["Major Homework", 3],["Project", 4],["Exam", 5]]), {}, class: "form-control"
-						.help-block Or whatever difficulty it's closest to
+						= f.text_field :assn_type, class: "form-control"
+						.help-block For example 'Homework' or 'Major Deadline'
 					.form-group
 						= f.label :percent_done, class: "col-md-4.control-label"
 						= f.text_field :percent_done, class: "form-control"
