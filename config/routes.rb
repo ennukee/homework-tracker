@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-
-  get 'welcome/index'
   get 'assignments/new'
   get 'assignments/carousel_toggle'
-  resources :assignments
+  resources :assignments 
   resources :users
 
+  get    'edit_assn' => 'assignments#edit'
   get    'login'  => 'sessions#new'
   post   'make_user'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

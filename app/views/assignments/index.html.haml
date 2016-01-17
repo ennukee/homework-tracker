@@ -1,4 +1,7 @@
 = form_for :assignment do |f|
+	#thecrasherbutton
+		=button_to '' #fuck this button, WHY DOES THIS NEED TO EXIST I'M SO CONFUSED
+
 	- if show_carousel?
 		= render 'carousel'
 	- if params[:about_us].present?
@@ -7,10 +10,12 @@
 		= render 'contact'
 	- else
 		- if logged_in?
-			- unless current_user.assignments.empty?
-				= render 'assignment_list', user: current_user
+			- if params[:view_asn].present?
+				- unless current_user.assignments.empty?
+					= render 'assignment_list', user: current_user
+				- else
+					= render 'no_assignments_notify', user: current_user
 			- else
-				= render 'no_assignments_notify', user: current_user
+				= render 'default_page'
 		- else
 			= render 'default_assignments_display'
-	= #render 'footer'

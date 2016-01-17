@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     Assignment.where(user_id: id)
   end
 
+  def assignments_due_in(i)
+    assignments.where("due_date < ?", Time.now + i.days)
+  end
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost

@@ -1,6 +1,5 @@
 class AssignmentsController < ApplicationController
   include ApplicationHelper
-
 	def new
 		@assignment = Assignment.new
 	end

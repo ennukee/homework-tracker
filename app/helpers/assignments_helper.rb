@@ -37,6 +37,15 @@ module AssignmentsHelper
 		i.strftime("%m/%d/%Y") + "\n(" + to_add + ")"
 	end
 
+	def days_til_format(i)
+		case(i)
+		when 0
+			to_add = "TODAY!"
+		when 1..7
+			to_add = "#{i} days"
+		end
+	end
+
 	def carousel_disabler_link
 		if session[:carousel]
 			link_to "Disable Carousel", controller: 'assignments', action: 'carousel_toggle'
@@ -46,6 +55,21 @@ module AssignmentsHelper
 	end
 
 	def show_carousel?
-    session[:carousel]
-  end
+    	session[:carousel]
+  	end
+
+  	def greeting_generator(name)
+  		case rand(5)
+  		when 0
+  			"Hey there, #{name}!"
+  		when 1
+  			"How's it going, #{name}?"
+  		when 2
+  			"Great to see you, #{name}!"
+  		when 3
+  			"How've you been, #{name}?"
+  		when 4
+  			"Ready to get workin', #{name}?"
+  		end
+  	end
 end

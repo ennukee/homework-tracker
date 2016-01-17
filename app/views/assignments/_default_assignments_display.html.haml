@@ -13,7 +13,7 @@
       %th#index_assn_type.assn_list_header
         = sortable "assn_type", "Type"
       %th#index_percent_done.assn_list_header
-        = sortable "percent_done", "Percent Done"
+        = sortable "percent_done", "Progress"
       %th#index_edit 
       %th#index_delete 
     = render 'default_assignment_row', asn_name: 'This could be your assignment!', asn_due_date: Time.now.to_date + 7.days, asn_assn_type: 'Major Deadline', asn_percent_done: 90

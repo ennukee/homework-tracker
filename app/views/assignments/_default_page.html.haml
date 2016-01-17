@@ -1,0 +1,35 @@
+#default_page
+	#title
+		= greeting_generator(current_user.username.capitalize)
+	#row-one.col-sm-12
+		.col-sm-1 a
+		.col-sm-5
+			#label
+				- due_within_week = current_user.assignments_due_in(7)
+				= "You have #{pluralize(due_within_week.count, 'assignment')} due within a week!"
+			%table.col-sm-12
+				%tr#headers
+					%th.row-name.col-sm-6 Name
+					%th.row-type.col-sm-3 Type
+					%th.row-due.col-sm-3 Due in
+				- due_within_week.each do |assn|
+					%tr
+						%td.row-name= assn.name
+						%td.row-type= assn.assn_type
+						%td.row-due= days_til_format((assn.due_date - Time.now.to_date).to_i)
+
+		.col-sm-5
+			.stuff
+				stuff
+			.stuff
+				stuff
+			.stuff
+				stuff
+			.stuff
+				stuff
+			.stuff
+				stuff
+		.col-sm-1
+	#row-two
+		dsfsdf
+		
