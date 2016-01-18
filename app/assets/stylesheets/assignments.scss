@@ -71,6 +71,24 @@ $gray-light: #3e3e3e;
 
 /* --- Assignment List Related --- */
 
+#details {
+  #start {
+    font-size: 19px;
+  }
+  .details {
+    .impt {
+      font-weight: bold;
+    }
+    font-size: 18px;
+    margin: 5px 0 5px 0;
+    padding-left: 5%;
+  }
+}
+
+#row-two {
+  padding-top: 20px;
+}
+
 .assn_list_header a {
   color: #333 !important;
 }
@@ -109,7 +127,7 @@ th, td#index_delete { width: 30px; }
     color: #bbb;
     background-color: #333;
     margin-top: -1px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 5px 0 5px 0;
     text-align: center;
     font-size: 30px;
@@ -195,4 +213,37 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+.center {
+  text-align: center;
+
+}
+
+.assn_impt {
+  font-size: 30px;
+  font-weight: bold;
+  a, a.hover, a.visited {
+    color: #F66;
+    text-decoration: none !important;
+  }
+}
+
+.assn_non_impt {
+  font-size: 20px;
+  font-weight: bold;
+  a, a.hover, a.visited {
+    color: green;
+    text-decoration: none !important;
+  }
+}
+
+.list-header {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 12px;
+}
+
+.all_assn_list .assn_impt a {
+  display: none;
 }

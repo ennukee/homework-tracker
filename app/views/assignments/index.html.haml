@@ -12,10 +12,13 @@
 		- if logged_in?
 			- if params[:view_asn].present?
 				- unless current_user.assignments.empty?
-					= render 'assignment_list', user: current_user
+					= render 'assignment_list', user: current_user, s_column: @s_column, s_direction: @s_direction
 				- else
 					= render 'no_assignments_notify', user: current_user
 			- else
-				= render 'default_page'
+				- unless current_user.assignments.empty?
+					= render 'default_page'
+				- else  
+					= render 'no_assignments_notify', user: current_user
 		- else
 			= render 'default_assignments_display'

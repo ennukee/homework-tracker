@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'assignments/new'
   get 'assignments/carousel_toggle'
+  get 'assignments/toggle_importance'
   resources :assignments 
   resources :users
 

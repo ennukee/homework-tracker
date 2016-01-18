@@ -10,6 +10,8 @@ class AssignmentsController < ApplicationController
 
 	def index
 		@assignments = Assignment.order(sort_column + " " + sort_direction)
+		@s_column = sort_column
+		@s_direction = sort_direction
 	end
 
 	def edit
@@ -42,6 +44,16 @@ class AssignmentsController < ApplicationController
 		@assignment.destroy
 
 		redirect_to assignments_path
+	end
+
+	def toggle_importance
+		@assignment = Assignment.find(params[:id])
+		if @assignment.important
+			@assignment.update_attributes(important: false)
+		else
+			@assignment.update_attributes(important: true)
+		end
+		redirect_to(:back)
 	end
 
   def carousel_toggle

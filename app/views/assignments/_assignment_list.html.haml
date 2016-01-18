@@ -1,6 +1,10 @@
-%table#assignment_list_table.table-striped
+.list-header.center
+  Important Assignments
+%table#assignment_list_table.table-striped.impt_assn_list
   %tbody
     %tr
+      %th#index_important.assn_list_header.center
+        = "-"
       %th#index_name.assn_list_header
         = sortable "name", "Name"
       %th#index_due_date.assn_list_header
@@ -12,5 +16,26 @@
       %th#index_edit 
       %th#index_delete 
     - if logged_in?
-      - user.assignments.each do |a|
+      - user.important_assignments.each do |a|
+        = render 'assignment_row', asn: a
+
+.list-header.center
+  All Assignments
+%table#assignment_list_table.table-striped.all_assn_list
+  %tbody
+    %tr
+      %th#index_important.assn_list_header.center
+        = "!"
+      %th#index_name.assn_list_header
+        = sortable "name", "Name"
+      %th#index_due_date.assn_list_header
+        = sortable "due_date", "Due Date"
+      %th#index_assn_type.assn_list_header
+        = sortable "assn_type", "Type"
+      %th#index_percent_done.assn_list_header
+        = sortable "percent_done", "Progress"
+      %th#index_edit 
+      %th#index_delete 
+    - if logged_in?
+      - user.assignments(s_column, s_direction).each do |a|
         = render 'assignment_row', asn: a
