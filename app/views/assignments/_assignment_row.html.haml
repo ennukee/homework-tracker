@@ -1,4 +1,6 @@
 %tr{style: 'vertical-align: middle;'}
+  %td#index_important{:class => "#{asn.important ? 'assn_impt' : 'assn_non_impt'}"}
+    = link_to "#{asn.important ? '-' : '!'}", controller: 'assignments', action: 'toggle_importance', id: asn.id
   %td#index_name.assn_names
     = #Math.sqrt(a.percent_done**2 + (10/7 * (Time.now.to_date-a.due_date).to_i)**2) * a.assn_type/5.0 + 141
     =asn.name
