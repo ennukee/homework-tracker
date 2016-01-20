@@ -6,6 +6,7 @@ class AssignmentsController < ApplicationController
 
 	def show
 		@assignment = Assignment.find(params[:id])
+		redirect_to assignments_path(view_asn: "true")
 	end
 
 	def index
@@ -16,6 +17,10 @@ class AssignmentsController < ApplicationController
 
 	def edit
 		@assignment = Assignment.find(params[:id])
+		if current_user.id != @assignment.user.id
+			flash_add(:danger, "That assignment doesn't belong to you!")
+			redirect_to root_path 
+		end
 	end
 
 	def update
@@ -41,8 +46,11 @@ class AssignmentsController < ApplicationController
 
 	def destroy
 		@assignment = Assignment.find(params[:id])
+		if current_user.id != @assignment.user.id
+			flash_add(:danger, "That assignment doesn't belong to you!")
+			redirect_to root_path and return
+		end
 		@assignment.destroy
-
 		redirect_to assignments_path
 	end
 
