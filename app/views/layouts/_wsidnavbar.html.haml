@@ -8,7 +8,7 @@
           - if logged_in?
             %li= link_to "Assignments", assignments_path(view_asn: "true")
             %li.dropdown
-              %a.dropdown-toggle#acctdropdown{:href => "#", "data-toggle" => "dropdown"} 
+              %button.dropdown-toggle#acctdropdown{:href => "#", "data-toggle" => "dropdown", :type => "button"} 
                 = current_user.username.capitalize
                 %b.caret
               %ul.dropdown-menu{"aria-labelledby" => "acctdropdown"}
