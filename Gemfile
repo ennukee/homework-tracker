@@ -8,6 +8,7 @@ gem "haml"
 gem "jquery-ui-rails"
 gem "jquery-turbolinks"
 gem 'bcrypt'
+gem 'redcarpet'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
