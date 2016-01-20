@@ -71,6 +71,27 @@ $gray-light: #3e3e3e;
 
 /* --- Assignment List Related --- */
 
+#assignment-list {
+  .add-assignment {
+    position: relative;
+    color: #bbb;
+    background-color: #333;
+    margin-top: -1px;
+    margin-bottom: 20px;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    font-size: 30px;
+    a:link, a:active, a:visited {
+      text-decoration: none;
+      color: #bbb;
+    }
+    a:hover {
+      text-decoration: none;
+      color: #ddd;
+    }
+  }
+}
+
 #details {
   #start {
     font-size: 19px;
