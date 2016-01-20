@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem "puma"
+gem "figaro"
 gem "nokogiri", ">= 1.6.7.rc"
 gem "haml-rails", :group => :development
 gem "haml"
