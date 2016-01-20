@@ -5,6 +5,7 @@ gem "figaro"
 gem "nokogiri", ">= 1.6.7.rc"
 gem "haml-rails", :group => :development
 gem "haml"
+gem "bootstrap"
 gem "jquery-ui-rails"
 gem "jquery-turbolinks"
 gem 'bcrypt'
