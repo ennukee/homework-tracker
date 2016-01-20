@@ -1,33 +1,34 @@
-%h2 
-	Editing 
-	= @assignment.name
-
-= form_for @assignment, url: assignment_path(@assignment), method: :patch do |f|
-	- if @assignment.errors.any?
-		%div#error_explanation
-			%h2
-				= pluralize(@assignment.errors.count, "error")
-				prohibited this assignment from being saved:
-			%ul
-				- @assignment.errors.full_messages.each do |msg|
-					%li
-						= msg
-	%p 
-		= f.label :name
-		%br/
-		= f.text_field :name
-	%p
-		= f.label :due_date
-		%br/
-		= f.date_select :due_date
-	%p
-		= f.label :assn_type
-		%br/
-		= f.text_field :assn_type
-	%p
-		= f.label :percent_done
-		%br/
-		= f.text_field :percent_done
-	%p
-		= f.submit
-	= link_to 'Back', assignments_path
+.row
+	.col-md-4.col-md-offset-4
+		= form_for @assignment, url: assignment_path(@assignment), method: :patch do |f|
+			= f.hidden_field :user_id, value: current_user.id
+			- if @assignment.errors.any?
+				%div#error_explanation{style: 'text-align: center;'}
+					%h2
+						= pluralize(@assignment.errors.count, "error")
+						prohibited this assignment from being saved:
+					- @assignment.errors.full_messages.each do |msg|
+						%p
+							= msg
+			.panel.panel-primary
+				.title{style: 'text-align: center;'}
+					%h3{style: 'font-size: 64px'} Create Assignment
+				.panel-body
+					.form-group
+						= f.label :name, class: "col-md-4.control-label"
+						= f.text_field :name, class: "form-control input-md"
+					.form-group
+						= f.label :due_date, class: "col-md-4.control-label"
+						= f.date_select :due_date, class: "form-control"
+					.form-group
+						= f.label :assn_type, "Assignment type", class: "col-md-4.control-label"
+						= f.text_field :assn_type, class: "form-control"
+						.help-block Like 'Homework' or 'Major Deadline'.
+					.form-group
+						= f.label :percent_done, class: "col-md-4.control-label"
+						= f.text_field :percent_done, class: "form-control"
+						.help-block Remember, from 0 to 100 is ideal.
+					.form-group
+						.btn{style: "background-color: #666"}
+							%button.btn.btn-default{type: 'submit'}
+								Submit
