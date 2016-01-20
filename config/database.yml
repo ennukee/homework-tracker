@@ -8,12 +8,12 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-  username: postgres
-  password: 081696
 
 development:
   <<: *default
   database: db/development
+  username: postgres
+  password: 081696
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,6 +21,8 @@ development:
 test:
   <<: *default
   database: db/test
+  username: postgres
+  password: 081696
   username: postgres
   password: 081696
 
