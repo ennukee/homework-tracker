@@ -5,7 +5,7 @@
 		.col-sm-1
 		.col-sm-5
 			#label
-				- due_within_week = current_user.assignments_due_in(7).order(:due_date)
+				- due_within_week = current_user.assignments_due_in(7)
 				= "You have #{pluralize(due_within_week.count, 'assignment')} due within a week!"
 			%table.col-sm-12.table-striped
 				%tr#headers

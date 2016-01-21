@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def important_assignments
-    assignments.where(important: true)
+    assignments.order(:due_date).where(important: true)
   end
 
   def assignments_due_in(i)
