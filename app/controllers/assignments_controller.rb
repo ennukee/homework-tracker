@@ -79,7 +79,7 @@ class AssignmentsController < ApplicationController
 		end
 
 		def sort_column
-   			Assignment.column_names.include?(params[:sort]) ? params[:sort] : "name"
+   			Assignment.column_names.include?(params[:sort]) ? params[:sort] : "due_date"
   		end
   
   		def sort_direction

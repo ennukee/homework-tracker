@@ -1,6 +1,5 @@
 class Assignment < ActiveRecord::Base
   belongs_to :user
-  default_scope { order('due_date ASC') }
 
   validates :name, presence: true, length: {minimum: 3}
 	validates_numericality_of :percent_done
