@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def assignments(col="due_date", dir="asc")
-    Assignment.where(user_id: id).order(col + " " + dir)
+    Assignment.all.order(col + " " + dir).where(user_id: id)
   end
 
   def important_assignments
