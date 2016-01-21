@@ -11,12 +11,12 @@
 				%tr#headers
 					%th.row-name.col-sm-6 Name
 					%th.row-type.col-sm-3 Type
-					%th.row-due.col-sm-3 Due in
+					%th.row-due.col-sm-3 Due Date
 				- due_within_week.each do |assn|
 					%tr
 						%td.row-name= assn.name
 						%td.row-type= assn.assn_type
-						%td.row-due= days_til_format((assn.due_date - Time.now.to_date).to_i)
+						%td.row-due= assn.due_date.strftime("%B %d, %Y") + ((assn.due_date - Time.now.to_date).to_i<2 ? " (!!)" : "")
 
 		.col-sm-5
 			#label
