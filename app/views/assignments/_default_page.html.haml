@@ -1,6 +1,8 @@
 #default_page
 	#title
 		= greeting_generator(current_user.username.capitalize)
+	#date.col-sm-12
+		= "Today's date is #{Time.now.strftime("%A %B %d, %Y")}!"
 	#row-one.col-sm-12
 		.col-sm-1
 		.col-sm-5
