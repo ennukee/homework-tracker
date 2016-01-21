@@ -18,16 +18,16 @@ class User < ActiveRecord::Base
     assignment_types.index(assn)
   end
 
-  def assignments(col="name", dir="asc")
+  def assignments(col="due_date", dir="asc")
     Assignment.where(user_id: id).order(col + " " + dir)
   end
 
   def important_assignments
-    assignments.order(:due_date).where(important: true)
+    assignments.where(important: true)
   end
 
   def assignments_due_in(i)
-    assignments.where("due_date < ?", Time.now + i.days)
+    assignments.where("due_date < ?", Time.now + i.days).order("due_date asc")
   end
 
   def User.digest(string)
