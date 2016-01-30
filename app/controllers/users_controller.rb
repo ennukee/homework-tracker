@@ -25,6 +25,14 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
+  def delete_past_due_assignments
+    @user = User.find(params[:id])
+    @user.assignments_past_due.each do |assn|
+      Assignment.delete(assn)
+    end
+    redirect_to :back
+  end
+
   private
     def assn_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)

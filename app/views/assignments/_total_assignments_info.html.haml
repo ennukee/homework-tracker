@@ -1,0 +1,19 @@
+.col-sm-5
+	#label
+		= "You have #{pluralize(current_user.assignments.count, 'assignment')} total!"
+	#details
+		#start
+			Of those, you have...
+		#tomorrow.details
+			.impt
+				- due = current_user.assignments_due_in(2)
+				%li= "#{pluralize(due.count, 'assignment')} due by tomorrow!"
+		#within-a-week.details
+			- due_within_week = current_user.assignments_due_in(7)
+			%li= "#{pluralize(due_within_week.count, 'assignment')} due within a week"
+		#within-a-month.details
+			- due = current_user.assignments_due_in(30)
+			%li= "#{pluralize(due.count, 'assignment')} due in under a month"
+		#important-assignments.impt.details
+			- cnt = current_user.important_assignments.count
+			%li= "#{pluralize(cnt, 'assignment')} that are deemed important!"

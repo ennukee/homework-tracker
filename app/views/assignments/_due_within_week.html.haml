@@ -1,0 +1,15 @@
+.col-sm-5
+	#label
+		- due_within_week = current_user.assignments_due_in(7)
+		= "You have #{pluralize(due_within_week.count, 'assignment')} due within a week!"
+	%table.col-sm-12.table-striped
+		- unless due_within_week.empty?
+			%tr#headers
+				%th.row-name.col-sm-6 Name
+				%th.row-type.col-sm-3 Type
+				%th.row-due.col-sm-3 Due Date
+			- due_within_week.each do |assn|
+				%tr
+					%td.row-name= assn.name
+					%td.row-type= assn.assn_type
+					%td.row-due= assn.due_date.strftime("%B %d, %Y") + ((assn.due_date - Time.now.to_date).to_i<2 ? " (!!)" : "")
