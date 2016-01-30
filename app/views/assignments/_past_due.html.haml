@@ -1,0 +1,17 @@
+.col-sm-5
+	- past_due = current_user.assignments_past_due
+	#label
+		= "You have #{pluralize(past_due.count, 'assignment')} past due!"
+	- unless past_due.empty?
+		%table.col-sm-12.table-striped
+			%tr#headers
+				%th.row-name.col-sm-4 Name
+				%th.row-type.col-sm-3 Type
+				%th.row-due.col-sm-3 Due Date
+				%th.row-del.col-sm-2 Delete?
+			- past_due.each do |assn|
+				%tr
+					%td.row-name= assn.name
+					%td.row-type= assn.assn_type
+					%td.row-due= assn.due_date.strftime("%B %d, %Y")
+					%td.row-del= button_to 'Delete', assignment_path(assn), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'

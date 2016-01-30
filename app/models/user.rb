@@ -27,7 +27,11 @@ class User < ActiveRecord::Base
   end
 
   def assignments_due_in(i)
-    assignments.where("due_date < ?", Time.now + i.days).order("due_date asc")
+    assignments.where("due_date < ? AND due_date > ?", Time.now + i.days, Time.now).order("due_date asc")
+  end
+
+  def assignments_past_due
+    assignments.where("due_date < ?", Time.now).order("due_date asc")
   end
 
   def User.digest(string)

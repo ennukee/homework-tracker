@@ -5,42 +5,15 @@
 		= "Today's date is #{Time.now.strftime("%A %B %d, %Y")}!"
 	#row-one.col-sm-12
 		.col-sm-1
-		.col-sm-5
-			#label
-				- due_within_week = current_user.assignments_due_in(7)
-				= "You have #{pluralize(due_within_week.count, 'assignment')} due within a week!"
-			%table.col-sm-12.table-striped
-				%tr#headers
-					%th.row-name.col-sm-6 Name
-					%th.row-type.col-sm-3 Type
-					%th.row-due.col-sm-3 Due Date
-				- due_within_week.each do |assn|
-					%tr
-						%td.row-name= assn.name
-						%td.row-type= assn.assn_type
-						%td.row-due= assn.due_date.strftime("%B %d, %Y") + ((assn.due_date - Time.now.to_date).to_i<2 ? " (!!)" : "")
-
-		.col-sm-5
-			#label
-				= "You have #{pluralize(current_user.assignments.count, 'assignment')} total!"
-			#details
-				#start
-					Of those, you have...
-				#tomorrow.details
-					.impt
-						- due = current_user.assignments_due_in(2)
-						%li= "#{pluralize(due.count, 'assignment')} due by tomorrow!"
-				#within-a-week.details
-					- due_within_week = current_user.assignments_due_in(7)
-					%li= "#{pluralize(due_within_week.count, 'assignment')} due within a week"
-				#within-a-month.details
-					- due = current_user.assignments_due_in(30)
-					%li= "#{pluralize(due.count, 'assignment')} due in under a month"
-				#important-assignments.impt.details
-					- cnt = current_user.important_assignments.count
-					%li= "#{pluralize(cnt, 'assignment')} that are deemed important!"
+		= render 'due_within_week'
+		= render 'total_assignments_info'
 		.col-sm-1
 	#row-two.col-sm-12
+		.col-sm-1
+		= render 'past_due'
+		.col-sm-5
+		.col-sm-1
+	#row-three.col-sm-12
 		.col-sm-3
 		.col-sm-6
 			= link_to 'View the full assignment list!', assignments_path(view_asn: "true"), class: 'btn btn-info'
