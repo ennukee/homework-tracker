@@ -6,16 +6,18 @@
         %ul.nav.navbar-nav.navbar-right
           %li.active{"role"=>"presentation"}= link_to "Home", root_path
           - if logged_in?
-            %li= link_to "Assignments", assignments_path(view_asn: "true")
-            %li.dropdown
-              %a.dropdown-toggle#acctdropdown{:href => "#", "data-toggle" => "dropdown", :type => "button"} 
-                = current_user.username.capitalize
-                %b.caret
-              %ul.dropdown-menu{"aria-labelledby" => "acctdropdown"}
-                %li= link_to "New Assignment", new_assignment_path
-                %li= link_to "Settings", '#'
-                %li.divider
-                %li= link_to "Log out", logout_path, method: :delete
+            %li
+              = link_to "Log out", logout_path, method: :delete
+            -#li= link_to "Assignments", assignments_path(view_asn: "true")
+            -#%li.dropdown
+              -#%a.dropdown-toggle#acctdropdown{:href => "#", "data-toggle" => "dropdown", :type => "button"} 
+                -#= current_user.username.capitalize
+                -#%b.caret
+              -#%ul.dropdown-menu{"aria-labelledby" => "acctdropdown"}
+                -#%li= link_to "New Assignment", new_assignment_path
+                -#%li= link_to "Settings", '#'
+                -#%li.divider
+                -#%li= link_to "Log out", logout_path, method: :delete
           - else
             %li
               = link_to "Log in", login_path
