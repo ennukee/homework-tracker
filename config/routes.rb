@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   resources :assignments 
   resources :users
 
-  get    'edit_assn' => 'assignments#edit'
-  get    'login'  => 'sessions#new'
-  post   'make_user'  => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  get    'edit_assn' =>                     'assignments#edit'
+  get    'login'  =>                        'sessions#new'
+  post   'make_user'  =>                    'sessions#create'
+  delete 'logout' =>                        'sessions#destroy'
+  delete 'delete_past_due_assignments' =>   'users#delete_past_due_assignments'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

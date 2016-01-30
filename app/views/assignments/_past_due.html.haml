@@ -15,3 +15,4 @@
 					%td.row-type= assn.assn_type
 					%td.row-due= assn.due_date.strftime("%B %d, %Y")
 					%td.row-del= button_to 'Delete', assignment_path(assn), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+		= button_to 'Delete all', delete_past_due_assignments_path(id: current_user.id), method: :delete

@@ -12,6 +12,16 @@
 		.col-sm-1
 		= render 'past_due'
 		.col-sm-5
+			:markdown
+				# Changelog
+				#### 1/30/2016 Update
+				 * **Bugfixes**
+				  * Added a temporary log out button while I investigate Heroku bootstrap issues
+				  * Removed 'X' button on notifications, as Heroku breaks the bootstrap behind it
+				 * **Features**
+				  * Added a new 'Past due' section to quickly remove past due assignments
+				  * 'Due within a week' assignnments (should) no longer include past-due assignments
+				  * You can now mass delete all past assignments
 		.col-sm-1
 	#row-three.col-sm-12
 		.col-sm-3
