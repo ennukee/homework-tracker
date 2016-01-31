@@ -5,11 +5,14 @@
 	%table.col-sm-12.table-striped
 		- unless due_within_week.empty?
 			%tr#headers
-				%th.row-name.col-sm-6 Name
+				%th.row-urgent
+				%th.row-name.col-sm-5 Name
 				%th.row-type.col-sm-3 Type
 				%th.row-due.col-sm-3 Due Date
 			- due_within_week.each do |assn|
+				- is_urgent = (assn.due_date - Time.now.to_date).to_i<2 ? "bold" : ""
 				%tr
+					%td.row-urgent= link_to '!', '#' if assn.important
 					%td.row-name= assn.name
 					%td.row-type= assn.assn_type
-					%td.row-due= assn.due_date.strftime("%B %d, %Y") + ((assn.due_date - Time.now.to_date).to_i<2 ? " (!!)" : "")
+					%td.row-due{class: is_urgent}= assn.due_date.strftime("%B %d, %Y")
