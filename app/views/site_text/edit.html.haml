@@ -1,0 +1,32 @@
+.row
+	.col-md-4.col-md-offset-4
+		= form_for @sitetext, url: site_text_path(@sitetext), method: :patch do |f|
+			= f.hidden_field :user_id, value: current_user.id
+			- if @sitetext.errors.any?
+				%div#error_explanation{style: 'text-align: center;'}
+					%h2
+						= pluralize(@sitetext.errors.count, "error")
+						prohibited this site text from being saved:
+					- @sitetext.errors.full_messages.each do |msg|
+						%p
+							= msg
+			.panel.panel-primary
+				.title{style: 'text-align: center;'}
+					%h3{style: 'font-size: 64px'} Editing Site Text
+				.panel-body
+					.form-group
+						= f.label :title, class: "col-md-4.control-label"
+						= f.text_field :title, class: "form-control input-md"
+					.form-group
+						= f.label :content, class: "col-md-4.control-label"
+						= f.text_area :content, class: "form-control", rows: 10
+					.form-group
+						= f.label :important, "Is this important? (a.k.a. an announcement)", class: "col-md-4.control-label"
+						= f.check_box :important, {class: "form-control"}, "1", "0"
+					.form-group
+						= f.label :markdown, "Render this using Markdown?", class: "col-md-4.control-label"
+						= f.check_box :markdown, {class: "form-control"}, "1", "0"
+					.form-group
+						.btn{style: "background-color: #666"}
+							%button.btn.btn-default{type: 'submit'}
+								Submit

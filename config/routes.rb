@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'assignments/toggle_importance'
   resources :assignments 
   resources :users
-
+  resources :site_text
+  
+  get    'generate_changelog' =>            'site_text#generate_changelog'
   get    'edit_assn' =>                     'assignments#edit'
   get    'login'  =>                        'sessions#new'
   post   'make_user'  =>                    'sessions#create'
