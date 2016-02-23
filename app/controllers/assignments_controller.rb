@@ -51,6 +51,7 @@ class AssignmentsController < ApplicationController
 					render 'new'
 				end
 			end
+			flash_add(:success, "Mass assignment creation successful!")
 			redirect_to root_path
 		else
 			@assignment = Assignment.new(assn_params)
@@ -93,12 +94,6 @@ class AssignmentsController < ApplicationController
   end
 
 	private
-		def repeat_count
-			params.require(:is_repeating) #make a checkbox with :is_repeating
-			params.require(:repeat_count) #make a field with :repeat_count
-			# then iterate :repeat_count # of times doing (7*:repeat_count).days + Time.now etc
-		end
-
 		helper_method :sort_column, :sort_direction
 		def assn_params
 			params.require(:assignment).permit(:name, :due_date, :assn_type, :percent_done, :user_id)
