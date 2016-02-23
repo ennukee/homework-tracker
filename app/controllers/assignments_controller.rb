@@ -25,7 +25,6 @@ class AssignmentsController < ApplicationController
 
 	def update
 		@assignment = Assignment.find(params[:id])
-
 		if @assignment.update(assn_params)
 			redirect_to @assignment
 		else
@@ -34,14 +33,35 @@ class AssignmentsController < ApplicationController
 	end
 
 	def create
-		@assignment = Assignment.new(assn_params)
-
-		if @assignment.save
-      flash_add(:success, "Assignment " + @assignment.name + " created!")
+		if params[:is_repeating]
+			(0..params.require(:repeat_count).to_i).each do |i| 
+				@assignment = Assignment.new(assn_params)
+				case params.require(:repeat_amount)
+				when 'Day(s)'
+					@assignment.due_date += i.days
+				when 'Week(s)'
+					@assignment.due_date += i.weeks
+				when 'Month(s)'
+					@assignment.due_date += i.months
+				when 'Year(s)'
+					@assignment.due_date += i.years
+				end
+				unless @assignment.save
+					flash_add(:danger, "Something wrong in the making of #{@assignment.name} #{i}")
+					render 'new'
+				end
+			end
 			redirect_to root_path
 		else
-			render 'new'
+			@assignment = Assignment.new(assn_params)
+			if @assignment.save
+	      		flash_add(:success, "Assignment " + @assignment.name + " created!")
+				redirect_to root_path
+			else
+				render 'new'
+			end
 		end
+		
 	end
 
 	def destroy
@@ -73,9 +93,19 @@ class AssignmentsController < ApplicationController
   end
 
 	private
+		def repeat_count
+			params.require(:is_repeating) #make a checkbox with :is_repeating
+			params.require(:repeat_count) #make a field with :repeat_count
+			# then iterate :repeat_count # of times doing (7*:repeat_count).days + Time.now etc
+		end
+
 		helper_method :sort_column, :sort_direction
 		def assn_params
 			params.require(:assignment).permit(:name, :due_date, :assn_type, :percent_done, :user_id)
+		end
+
+		def mass_assn_params
+			params.require(:assignment).permit(:name, :assn_type, :percent_done, :user_id)
 		end
 
 		def sort_column
