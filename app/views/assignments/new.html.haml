@@ -25,7 +25,7 @@
 							= label_tag "is_repeating", "Repeat?", {class: "col-md-4.control-label"}
 							= check_box_tag "is_repeating", "true", false, {class: "form-control", style: "width: 50px;"}
 						.col-md-9
-							= label_tag "repeat_count", "How many", class: "col-md-4.control-label"
+							= label_tag "repeat_count", "For ", class: "col-md-4.control-label"
 							= select_tag "repeat_count", options_for_select((1..10))
 							= select_tag "repeat_amount", options_for_select(['Day(s)', 'Week(s)', 'Month(s)', 'Year(s)'])
 							.help-block You cannot delete the created assignments in mass, so be careful making a lot of assignments this way.
